@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>Files Inventory</title>
+    <LINK href="mainStyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<script type="text/javascript" src="jquery-1.7.1.js"></script>
+
+
+<h1>Files Inventory</h1>
+<pre><hr><img src="assets/blank.gif"><img src="assets/back.jpg" alt="[DIR]"> <a href="/releases/firebug/">Back</a></pre>
+<table id="linkTable" style="width: 100%;">
+    <tbody>
+        <tr ><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0.xpi">Teachers</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Family</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Strangers</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Friends</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Coworkers</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Classmates</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Acquaintances</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Professionals</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Neighbors</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Relatives</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Boyfriends</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Characters</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Artists</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Fantasies</a></td></tr>
+        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Street</a></td></tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+    function appendTable(title, url){
+        var code = '<tr ><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="'+url+'">'+title+'</a></td></tr>';
+        $("#linkTable > tbody:last").append(code);
+    }
+    appendTable("YAY", "NOWEER")
+</script>
+</body></html>

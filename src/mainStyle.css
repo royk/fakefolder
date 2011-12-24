@@ -1,0 +1,14 @@
+h1{
+    color: #60605F;
+}
+a{
+    font-size: larger;
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    color:blue;
+}
+td{
+    background-color:       #E9E8E7;
+}
