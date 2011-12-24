@@ -9,7 +9,7 @@
 
 
 <h1>Files Inventory</h1>
-<pre><hr><img src="assets/blank.gif"><img src="assets/back.jpg" alt="[DIR]"> <a href="javascript:loadPreviousID()">Back</a></pre>
+<pre><hr><img src="assets/blank.gif"><img src="assets/back.jpg" alt="[DIR]"> <a href="javascript:loadPreviousDepth()">Back</a></pre>
 <table id="linkTable" style="width: 100%;">
     <tbody>
 
@@ -59,43 +59,53 @@
     }
 
     function parseXML(){
+             console.log($(xmlDoc).find("depth") )
             $(xmlDoc).find("children").each(function()
             {
-                var id = $(this).attr("id");
-                var childrenArr = window["children"+id];
-                if (childrenArr==undefined){
-                    window["childrenArr"+id] = new Array();;
-                    childrenArr = window["childrenArr"+id];
+                var depth = $(this).attr("depth");
+                var depthArr = window["depth"+depth];
+                if (depthArr==undefined){
+                    window["depth"+depth] = new Array();;
+                    depthArr = window["depth"+depth];
                 }
-                $(this).find("item").each(function()
-                {
-                    childrenArr.push({title:$(this).attr("title"), nextID:$(this).attr("children")});
-                    console.log(id+" "+$(this).attr("title"));
-                });
+                var items = new Array();
+                $(this).find("item").each(function(){
+                    var o = $(this).attr("title");
+                    items.push(o);
+                })
+                depthArr.push(items);
             })
-            loadNextID(0);
+            loadNextDepth();
 
     }
 
-      function loadPreviousID(){
-          loadNextID(previousID);
+      function loadPreviousDepth(){
+          currentDepth-=2;
+          if (currentDepth<0){
+              currentDepth = 0;
+          }
+          loadNextDepth(previousGroups[currentDepth]);
       }
-      function loadNextID(id){
+      function loadNextDepth(groupNumber){
 
-          var childrenArr = this["childrenArr"+id];
-          console.log("loading ID "+id);
-          if (childrenArr){
-              clearTable();
-
-              $("#linkTable").delay(500).queue(function(){
-                  console.log("creating ID "+id);
-                  for each (o in childrenArr){
-                      appendTable(o.title, "javascript:loadNextID("+o.nextID+")");
-                      $("#linkTable").dequeue();
-                  }
-              });
-              previousID = currentID;
-              currentID  = id;;
+          var depth = this["depth"+currentDepth];
+          console.log("loading depth "+currentDepth);
+          if (depth){
+              if (groupNumber==undefined)
+                groupNumber = Math.floor(Math.random()*depth.length);
+              var group = depth[groupNumber];
+              if (group){
+                  clearTable();
+                  previousGroups[currentDepth] =  groupNumber;
+                  $("#linkTable").delay(500).queue(function(){
+                      console.log("creating depth "+currentDepth);
+                      for each (o in group){
+                          appendTable(o, "javascript:loadNextDepth()");
+                          $("#linkTable").dequeue();
+                      }
+                  });
+                  currentDepth++;
+              }
           }
 
       }
@@ -108,8 +118,8 @@
      function clearTable(){
          $("#linkTable tr").remove().fadeOut(500);
      }
-       var currentID = 0;
-      var previousID = 0;
+       var currentDepth = 0;
+        var previousGroups =new Array();
     importXML("http://www.w3schools.com/xml/note.xml");
 </script>
 </body></html>
