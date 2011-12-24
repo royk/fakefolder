@@ -9,31 +9,107 @@
 
 
 <h1>Files Inventory</h1>
-<pre><hr><img src="assets/blank.gif"><img src="assets/back.jpg" alt="[DIR]"> <a href="/releases/firebug/">Back</a></pre>
+<pre><hr><img src="assets/blank.gif"><img src="assets/back.jpg" alt="[DIR]"> <a href="javascript:loadPreviousID()">Back</a></pre>
 <table id="linkTable" style="width: 100%;">
     <tbody>
-        <tr ><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0.xpi">Teachers</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Family</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Strangers</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Friends</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Coworkers</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Classmates</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Acquaintances</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Professionals</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Neighbors</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Relatives</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Boyfriends</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Characters</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Artists</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Fantasies</a></td></tr>
-        <tr><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="firebug-1.8.0a1.xpi">Street</a></td></tr>
+
     </tbody>
 </table>
 <script type="text/javascript">
+    var xmlDoc;
+    var xmlloaded = false;
+    function importXML(xmlfile)
+    {
+        try
+        {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", xmlfile, false);
+        }
+        catch (Exception)
+        {
+            var ie = (typeof window.ActiveXObject != 'undefined');
+
+            if (ie)
+            {
+                xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+                xmlDoc.async = false;
+                while(xmlDoc.readyState != 4) {};
+                xmlDoc.load(xmlfile);
+                xmlloaded = true;
+                parseXML();
+            }
+            else
+            {
+                xmlDoc = document.implementation.createDocument("", "", null);
+                xmlDoc.onload = readXML;
+                xmlDoc.load(xmlfile);
+                xmlloaded = true;
+                parseXML();
+            }
+        }
+
+        if (!xmlloaded)
+        {
+            xmlhttp.setRequestHeader('Content-Type', 'text/xml')
+            xmlhttp.send("");
+            xmlDoc = xmlhttp.responseXML;
+            xmlloaded = true;
+            parseXML();
+        }
+    }
+
+    function parseXML(){
+            $(xmlDoc).find("children").each(function()
+            {
+                var id = $(this).attr("id");
+                var childrenArr = window["children"+id];
+                if (childrenArr==undefined){
+                    window["childrenArr"+id] = new Array();;
+                    childrenArr = window["childrenArr"+id];
+                }
+                $(this).find("item").each(function()
+                {
+                    childrenArr.push({title:$(this).attr("title"), nextID:$(this).attr("children")});
+                    console.log(id+" "+$(this).attr("title"));
+                });
+            })
+            loadNextID(0);
+
+    }
+
+      function loadPreviousID(){
+          loadNextID(previousID);
+      }
+      function loadNextID(id){
+
+          var childrenArr = this["childrenArr"+id];
+          console.log("loading ID "+id);
+          if (childrenArr){
+              clearTable();
+
+              $("#linkTable").delay(500).queue(function(){
+                  console.log("creating ID "+id);
+                  for each (o in childrenArr){
+                      appendTable(o.title, "javascript:loadNextID("+o.nextID+")");
+                      $("#linkTable").dequeue();
+                  }
+              });
+              previousID = currentID;
+              currentID  = id;;
+          }
+
+      }
+
     function appendTable(title, url){
         var code = '<tr ><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="'+url+'">'+title+'</a></td></tr>';
-        $("#linkTable > tbody:last").append(code);
+        $("#linkTable > tbody:last").append(code);;
     }
-    appendTable("YAY", "NOWEER")
+
+     function clearTable(){
+         $("#linkTable tr").remove().fadeOut(500);
+     }
+       var currentID = 0;
+      var previousID = 0;
+    importXML("http://www.w3schools.com/xml/note.xml");
 </script>
 </body></html>
