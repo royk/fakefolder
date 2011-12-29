@@ -51,13 +51,13 @@ var fakeFolder = {
                     var depth = $(this).attr("depth");
                     var depthArr = fakeFolder.depths["depth"+depth];
                     if (depthArr==undefined){
-                        fakeFolder.depths["depth"+depth] = new Array();;
+                        fakeFolder.depths["depth"+depth] = new Array();
                         depthArr = fakeFolder.depths["depth"+depth];
                     }
-                    var items = new Array();
+                    var items = {arr:new Array(), viewed:false}
                     $(this).find("item").each(function(){
                         var o = $(this).attr("title");
-                        items.push(o);
+                        items.arr.push(o);
                     })
                     depthArr.push(items);
                 })
@@ -72,26 +72,46 @@ var fakeFolder = {
               }
               this.loadNextDepth(this.prevDepths[this.currentDepth]);
           },
-        loadNextDepth:function(groupNumber){
+            loadNextDepth:function(groupNumber){
 
               var depth = this.depths["depth"+this.currentDepth];
-              console.log("loading depth "+depth);
+              var group;
+              var done = false;
+              var count = 0;
+              console.log("loading depth "+this.currentDepth);
               if (depth){
-                  if (groupNumber==undefined)
-                    groupNumber = Math.floor(Math.random()*depth.length);
-                  var group = depth[groupNumber];
+                  if (groupNumber===undefined){
+                      groupNumber = Math.floor(Math.random()*depth.length);
+
+                      while (done===false){
+                          group = depth[groupNumber]
+                          if (group && group.viewed===false){
+                              done = true;
+                              break;
+                          }
+                          groupNumber++;
+                          groupNumber = groupNumber%depth.length;
+                          count++;
+                          if (count===depth.length){
+                              done = true;
+                              this.currentDepth++;
+                              this.loadNextDepth();
+                              return;
+                          }
+                      }
+                  }
                   if (group){
+                      group.viewed = true;
                       this.clearTable();
                       this.prevDepths[this.currentDepth] =  groupNumber;
                       console.log($("#linkTable"));
                       $("#linkTable").delay(500).queue(function(){
                           console.log("creating depth "+this.currentDepth);
-                          for each (o in group){
+                          for each (o in group.arr){
                               fakeFolder.appendTable(o, "javascript:fakeFolder.loadNextDepth()");
                               $("#linkTable").dequeue();
                           }
                       });
-                      this.currentDepth++;
                   }
               }
 
