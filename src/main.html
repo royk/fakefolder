@@ -2,124 +2,22 @@
 <head>
     <title>Files Inventory</title>
     <LINK href="mainStyle.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </head>
 
 <body>
-<script type="text/javascript" src="jquery-1.7.1.js"></script>
+
 
 
 <h1>Files Inventory</h1>
-<pre><hr><img src="assets/blank.gif"><img src="assets/back.jpg" alt="[DIR]"> <a href="javascript:loadPreviousDepth()">Back</a></pre>
+<pre><hr><img src="assets/blank.gif"><img src="assets/back.jpg" alt="[DIR]"> <a href="javascript:fakeFolder.loadPreviousDepth()">Back</a></pre>
 <table id="linkTable" style="width: 100%;">
     <tbody>
 
     </tbody>
 </table>
 <script type="text/javascript">
-    var xmlDoc;
-    var xmlloaded = false;
-    function importXML(xmlfile)
-    {
-        try
-        {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("GET", xmlfile, false);
-        }
-        catch (Exception)
-        {
-            var ie = (typeof window.ActiveXObject != 'undefined');
-
-            if (ie)
-            {
-                xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-                xmlDoc.async = false;
-                while(xmlDoc.readyState != 4) {};
-                xmlDoc.load(xmlfile);
-                xmlloaded = true;
-                parseXML();
-            }
-            else
-            {
-                xmlDoc = document.implementation.createDocument("", "", null);
-                xmlDoc.onload = readXML;
-                xmlDoc.load(xmlfile);
-                xmlloaded = true;
-                parseXML();
-            }
-        }
-
-        if (!xmlloaded)
-        {
-            xmlhttp.setRequestHeader('Content-Type', 'text/xml')
-            xmlhttp.send("");
-            xmlDoc = xmlhttp.responseXML;
-            xmlloaded = true;
-            parseXML();
-        }
-    }
-
-    function parseXML(){
-             console.log($(xmlDoc).find("depth") )
-            $(xmlDoc).find("children").each(function()
-            {
-                var depth = $(this).attr("depth");
-                var depthArr = window["depth"+depth];
-                if (depthArr==undefined){
-                    window["depth"+depth] = new Array();;
-                    depthArr = window["depth"+depth];
-                }
-                var items = new Array();
-                $(this).find("item").each(function(){
-                    var o = $(this).attr("title");
-                    items.push(o);
-                })
-                depthArr.push(items);
-            })
-            loadNextDepth();
-
-    }
-
-      function loadPreviousDepth(){
-          currentDepth-=2;
-          if (currentDepth<0){
-              currentDepth = 0;
-          }
-          loadNextDepth(previousGroups[currentDepth]);
-      }
-      function loadNextDepth(groupNumber){
-
-          var depth = this["depth"+currentDepth];
-          console.log("loading depth "+currentDepth);
-          if (depth){
-              if (groupNumber==undefined)
-                groupNumber = Math.floor(Math.random()*depth.length);
-              var group = depth[groupNumber];
-              if (group){
-                  clearTable();
-                  previousGroups[currentDepth] =  groupNumber;
-                  $("#linkTable").delay(500).queue(function(){
-                      console.log("creating depth "+currentDepth);
-                      for each (o in group){
-                          appendTable(o, "javascript:loadNextDepth()");
-                          $("#linkTable").dequeue();
-                      }
-                  });
-                  currentDepth++;
-              }
-          }
-
-      }
-
-    function appendTable(title, url){
-        var code = '<tr ><td><img src="assets/blank.gif"><img src="assets/folder.jpg" alt="[   ]"> <a href="'+url+'">'+title+'</a></td></tr>';
-        $("#linkTable > tbody:last").append(code);;
-    }
-
-     function clearTable(){
-         $("#linkTable tr").remove().fadeOut(500);
-     }
-       var currentDepth = 0;
-        var previousGroups =new Array();
-    importXML("http://www.w3schools.com/xml/note.xml");
+    fakeFolder.importXML("file:///C:/repositories/fakefolder/src/test.xml")
 </script>
 </body></html>

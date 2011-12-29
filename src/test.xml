@@ -1,0 +1,46 @@
+<?access-control allow="*"?>
+<depths>
+<children depth="0">
+<item title="Teachers"/>
+<item title="Family"/>
+<item title="Strangers"/>
+</children>
+<children depth="1">
+<item title="Israela"/>
+<item title="Hava"/>
+<item title="Eilat"/>
+</children>
+<children depth="1">
+<item title="qwer"/>
+<item title="Haqwerva"/>
+<item title="Eqweilat"/>
+<item title="qwfwe"/>
+<item title="wefwef"/>
+<item title="Eqwefeilat"/>
+</children>
+<children id="2" depth="1">
+<item title="Mom" level="2"/>
+<item title="Dad" level="2"/>
+<item title="Sister" level="2"/>
+</children>
+<children id="3" depth="1">
+<item title="Moshe" level="2"/>
+<item title="Haim" level="2"/>
+<item title="Lolo" level="2"/>
+</children>
+<children id="3" depth="2">
+<item title="Moshe" level="2"/>
+<item title="Haim" level="2"/>
+<item title="Lolo" level="2"/>
+</children>
+<children id="3" depth="2">
+<item title="Moshe" level="2"/>
+<item title="Haim" level="2"/>
+<item title="Lolo" level="2"/>
+</children>
+<children id="3" depth="2">
+<item title="Moshe" level="2"/>
+<item title="Haim" level="2"/>
+<item title="Lolo" level="2"/>
+</children>
+</depths>
