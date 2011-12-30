@@ -5,6 +5,7 @@ var fakeFolder = {
     xmlLoaded:false,
     currentGroup:undefined,
     currentDepth:0,
+    pathTree:{},
     importXML:function(xmlfile)
     {
         try
@@ -55,9 +56,9 @@ var fakeFolder = {
                 fakeFolder.depths["depth"+depth] = new Array();
                 depthArr = fakeFolder.depths["depth"+depth];
             }
-            var items = {arr:new Array(), viewed:false}
+            var items = {arr:new Array(), viewed:false, parent:undefined}
             $(this).find("item").each(function(){
-                var o = $(this).attr("title");
+                var o ={title: $(this).attr("title"), child:undefined};
                 items.arr.push(o);
             })
             depthArr.push(items);
@@ -67,20 +68,24 @@ var fakeFolder = {
     },
 
     loadPreviousDepth:function(){
-        if (this.backStack.length>0){
-            var group = this.backStack.pop();
-            this.loadGroup(group);
+        if (this.currentGroup!=undefined && this.currentGroup.parent!=undefined){
+            this.loadGroup(this.currentGroup.parent, 0, false);
         }
     },
-    loadNextDepth:function(groupNumber){
+    loadNextDepth:function(itemNumber){
 
         var depth = this.depths["depth"+this.currentDepth];
         var group;
         var done = false;
         var count = 0;
-        console.log("loading depth "+this.currentDepth);
-        if (depth){
-            if (groupNumber===undefined){
+        var groupNumber;
+
+        if (this.currentGroup!=undefined && itemNumber!=undefined && this.currentGroup.arr[itemNumber].child!=undefined){
+            this.loadGroup(this.currentGroup.arr[itemNumber].child, false);
+        }
+        else{
+            console.log("loading depth "+this.currentDepth);
+            if (depth){
                 groupNumber = Math.floor(Math.random()*depth.length);
 
                 while (done===false){
@@ -95,22 +100,24 @@ var fakeFolder = {
                     if (count===depth.length){
                         done = true;
                         this.currentDepth++;
-                        this.loadNextDepth();
+                        this.loadNextDepth(itemNumber);
                         return;
                     }
                 }
+                this.loadGroup(group, itemNumber, true);
             }
-            if (this.currentGroup!=undefined){
-                this. backStack.push(this.currentGroup);
-            }
-            this.loadGroup(group);
         }
 
 
     },
 
-    loadGroup:function(group){
+    loadGroup:function(group, itemNumber, saveTree){
+        var i=0;
         if (group){
+            if (saveTree===true && this.currentGroup!=undefined){
+                this.currentGroup.arr[itemNumber].child = group;
+                group.parent = this.currentGroup;
+            }
             this. currentGroup = group;
             group.viewed = true;
             this.clearTable();
@@ -118,7 +125,8 @@ var fakeFolder = {
             $("#linkTable").delay(500).queue(function(){
                 console.log("creating depth "+this.currentDepth);
                 for each (o in group.arr){
-                    fakeFolder.appendTable(o, "javascript:fakeFolder.loadNextDepth()");
+                    fakeFolder.appendTable(o.title, "javascript:fakeFolder.loadNextDepth("+i+")");
+                    i++;
                     $("#linkTable").dequeue();
                 }
             });

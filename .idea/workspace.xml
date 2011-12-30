@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd05c31e-2cfb-4809-936c-767877627af0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.html" afterPath="$PROJECT_DIR$/src/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
     </list>
     <ignored path="FakeFolder.iws" />
@@ -100,7 +99,7 @@
       <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="4" selection-start="136" selection-end="136" vertical-scroll-proportion="-1.5124555">
+            <state line="105" column="164" selection-start="3479" selection-end="3479" vertical-scroll-proportion="0.17319098">
               <folding />
             </state>
           </provider>
@@ -515,7 +514,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="4" selection-start="136" selection-end="136" vertical-scroll-proportion="-1.5124555">
+        <state line="105" column="164" selection-start="3479" selection-end="3479" vertical-scroll-proportion="0.17319098">
           <folding />
         </state>
       </provider>
