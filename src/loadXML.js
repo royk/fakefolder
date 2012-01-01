@@ -1,1 +1,0 @@
-fakeFolder.importXML("file:///c:/repositories/fakefolder/src/test.xml")
