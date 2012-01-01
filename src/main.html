@@ -11,13 +11,17 @@
 
 
 <h1>Files Inventory</h1>
-<pre><hr><img src="assets/blank.gif"><img src="assets/back.jpg" alt="[DIR]"> <a href="javascript:fakeFolder.loadPreviousDepth()">Back</a></pre>
-<table id="linkTable" style="width: 100%;">
+<pre><hr><img src="assets/blank.gif"><input type="image" src="assets/back_button.png"
+                                            onmousedown="this.src='assets/back_button_selected.png'"
+                                            onmouseup="this.src='assets/back_button.png'"
+                                            onmouseout="this.src='assets/back_button.png'"
+                                            name="Back"> <a href="javascript:fakeFolder.loadPreviousDepth()">Back</a></pre>
+<table id="linkTable" style="width: 100%; vertical-align: middle;">
     <tbody>
 
     </tbody>
 </table>
 <script type="text/javascript">
-    fakeFolder.importXML("file:///E:/Projects/fakefolder/src/test.xml")
+    fakeFolder.importXML("file:///c:/repositories/fakefolder/src/test.xml")
 </script>
 </body></html>
