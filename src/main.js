@@ -56,7 +56,7 @@ var fakeFolder = {
                 fakeFolder.depths["depth"+depth] = new Array();
                 depthArr = fakeFolder.depths["depth"+depth];
             }
-            var items = {arr:new Array(), viewed:false, parent:undefined}
+            var items = {arr:new Array(), viewed:false, parent:undefined, depth:depth}
             $(this).find("item").each(function(){
                 var o ={title: $(this).attr("title"), child:undefined};
                 items.arr.push(o);
@@ -84,7 +84,6 @@ var fakeFolder = {
             this.loadGroup(this.currentGroup.arr[itemNumber].child, false);
         }
         else{
-            console.log("loading depth "+this.currentDepth);
             if (depth){
                 groupNumber = Math.floor(Math.random()*depth.length);
 
@@ -114,16 +113,19 @@ var fakeFolder = {
     loadGroup:function(group, itemNumber, saveTree){
         var i=0;
         if (group){
+            console.log("Loading group. Depth:"+group.depth);
             if (saveTree===true && this.currentGroup!=undefined){
+                console.log("  Saving to tree")
                 this.currentGroup.arr[itemNumber].child = group;
                 group.parent = this.currentGroup;
             }
-            this. currentGroup = group;
+
+            this.currentGroup = group;
+            this.currentDepth = group.depth;
             group.viewed = true;
             this.clearTable();
             console.log($("#linkTable"));
             $("#linkTable").delay(500).queue(function(){
-                console.log("creating depth "+this.currentDepth);
                 for each (o in group.arr){
                     fakeFolder.appendTable(o.title, "javascript:fakeFolder.loadNextDepth("+i+")");
                     i++;
