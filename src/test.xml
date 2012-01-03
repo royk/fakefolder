@@ -1,46 +1,295 @@
-<?access-control allow="*"?>
 <depths>
-<children depth="0">
-<item title="Teachers"/>
-<item title="Family"/>
-<item title="Strangers"/>
-</children>
-<children depth="1">
-<item title="Israela"/>
-<item title="Hava"/>
-<item title="Eilat"/>
-</children>
-<children depth="1">
-<item title="qwer"/>
-<item title="Haqwerva"/>
-<item title="Eqweilat"/>
-<item title="qwfwe"/>
-<item title="wefwef"/>
-<item title="Eqwefeilat"/>
-</children>
-<children id="2" depth="1">
-<item title="Mom" level="2"/>
-<item title="Dad" level="2"/>
-<item title="Sister" level="2"/>
-</children>
-<children id="3" depth="1">
-<item title="Moshe" level="2"/>
-<item title="Haim" level="2"/>
-<item title="Lolo" level="2"/>
-</children>
-<children id="3" depth="2">
-<item title="Moshe" level="2"/>
-<item title="Haim" level="2"/>
-<item title="Lolo" level="2"/>
-</children>
-<children id="3" depth="2">
-<item title="Moshe" level="2"/>
-<item title="Haim" level="2"/>
-<item title="Lolo" level="2"/>
-</children>
-<children id="3" depth="2">
-<item title="Moshe" level="2"/>
-<item title="Haim" level="2"/>
-<item title="Lolo" level="2"/>
-</children>
+	<children depth="0">
+		<item title="Acquaintances"/>
+		<item title="Artists"/>
+		<item title="Characters"/>
+		<item title="Classmates"/>
+		<item title="Coworkers"/>
+		<item title="Family"/>
+		<item title="Fantasies"/>
+		<item title="Friends"/>
+		<item title="Neighbors"/>
+		<item title="Professionals"/>
+		<item title="Relatives"/>
+		<item title="Teachers"/>
+		<item title="Strangers"/>
+	</children>
+	<children depth="1">
+		<item title="A"/>
+		<item title="E"/>
+		<item title="D"/>
+		<item title="F"/>
+		<item title="J"/>
+		<item title="I"/>
+		<item title="M"/>
+		<item title="N"/>
+		<item title="O"/>
+		<item title="R"/>
+		<item title="S"/>
+		<item title="V"/>
+		<item title="W"/>
+		<item title="Y"/>
+	</children>
+	<children depth="1">
+		<item title="Alive"/>
+		<item title="Dead"/>
+		<item title="Don't know"/>
+	</children>
+	<children depth="1">
+		<item title="Dislikes me"/>
+		<item title="Likes me"/>
+	</children>
+	<children depth="1">
+		<item title="Boring"/>
+		<item title="Interesting"/>
+	</children>
+	<children depth="1">
+		<item title="Doesn't have a job"/>
+		<item title="Has a job"/>
+	</children>
+	<children depth="1">
+		<item title="Charming"/>
+		<item title="Don't know"/>
+		<item title="Tedious"/>
+	</children>
+	<children depth="1">
+		<item title="Don't know"/>
+		<item title="Guest"/>
+		<item title="Host"/>
+	</children>
+	<children depth="2">
+		<item title="Don't know"/>
+		<item title="Drinks coffee"/>
+		<item title="Drinks coke"/>
+		<item title="Drinks mate"/>
+		<item title="Drinks whisky"/>
+	</children>
+	<children depth="2">
+		<item title="30's"/>
+		<item title="40's"/>
+		<item title="50's"/>
+		<item title="60's"/>
+		<item title="70's"/>
+		<item title="80's"/>
+		<item title="90's"/>
+		<item title="Don't know"/>
+	</children>
+	<children depth="2">
+		<item title="Doesn't have glasses"/>
+		<item title="Don't know"/>
+		<item title="Have glasses"/>
+	</children>
+	<children depth="2">
+		<item title="Blue eyes"/>
+		<item title="Brown eyes"/>
+		<item title="Don't know"/>
+		<item title="Gray eyes"/>
+		<item title="Green eyes"/>
+	</children>
+	<children depth="2">
+		<item title="Didn't meet"/>
+		<item title="Met in a class"/>
+		<item title="Met in an exhibition"/>
+		<item title="Met in a house"/>
+		<item title="Met on the street"/>
+	</children>
+	<children depth="2">
+		<item title="Bad looking"/>
+		<item title="Good looking"/>
+		<item title="Don't know"/>
+		<item title="More or less"/>
+	</children>
+	<children depth="2">
+		<item title="Center"/>
+		<item title="Center left"/>
+		<item title="Center right"/>
+		<item title="Don't know"/>
+		<item title="Left wing"/>
+		<item title="Right wing"/>
+	</children>
+	<children depth="2">
+		<item title="Don't know"/>
+		<item title="Short"/>
+		<item title="Tall"/>
+	</children>
+	<children depth="2">
+		<item title="Cooks"/>
+		<item title="Eats"/>
+	</children>
+	<children depth="2">
+		<item title="Don't know"/>
+		<item title="Likes art"/>
+		<item title="Likes beer"/>
+		<item title="Likes books"/>
+		<item title="Likes cigarettes"/>
+		<item title="Likes coffee"/>
+		<item title="Likes french philosophy"/>
+		<item title="Likes interior design"/>
+		<item title="Likes modern architecture"/>
+		<item title="Likes movies"/>
+		<item title="Likes nothing"/>
+		<item title="Likes gardens"/>
+		<item title="Likes politics"/>
+		<item title="Likes sex"/>
+		<item title="Likes work"/>
+		<item title="Likes to draw"/>
+		<item title="Likes to eat"/>
+		<item title="Likes to run"/>
+		<item title="Likes to date"/>
+		<item title="Likes to shop"/>
+		<item title="Likes to sleep"/>
+		<item title="Likes to stare"/>
+	</children>
+	<children depth="2">
+		<item title="Aries"/>
+		<item title="Aquarius"/>
+		<item title="Cancer"/>
+		<item title="Don't know"/>
+		<item title="Capricorn"/>
+		<item title="Gemini"/>
+		<item title="Leo"/>
+		<item title="Libra"/>
+		<item title="Virgo"/>
+		<item title="Taurus"/>
+		<item title="Sagittarius"/>
+		<item title="Scorpio"/>
+		<item title="Pisces"/>
+	</children>
+	<children depth="3">
+		<item title="It's ok"/>
+		<item title="Speaks too much"/>
+	</children>
+	<children depth="3">
+		<item title="Don't know"/>
+		<item title="Loves their father"/>
+		<item title="Loves their mother"/>
+	</children>
+	<children depth="3">
+		<item title="Don't know"/>
+		<item title="Allergic to berries"/>
+		<item title="Allergic to bees"/>
+		<item title="Allergic to chocolate"/>
+		<item title="Allergic to cats"/>
+		<item title="Allergic to dust"/>
+		<item title="Allergic to flour"/>
+		<item title="Allergic to flowers"/>
+		<item title="Allergic to heat"/>
+		<item title="Allergic to milk"/>
+		<item title="Allergic to mosquitoes"/>
+		<item title="Allergic to peanuts"/>
+		<item title="Allergic to sex"/>
+		<item title="Allergic to the sun"/>
+		<item title="Allergic to sweat"/>
+	</children>
+	<children depth="3">
+		<item title="Doesn't talk about books"/>
+		<item title="Doesn't talk about death"/>
+		<item title="Doesn't talk about feelings"/>
+		<item title="Doesn't talk about god"/>
+		<item title="Doesn't talk about hate"/>
+		<item title="Doesn't talk about history"/>
+		<item title="Doesn't talk about politics"/>
+		<item title="Doesn't talk about money"/>
+		<item title="Doesn't talk about sex"/>
+		<item title="Doesn't talk about the future"/>
+		<item title="Doesn't talk about work"/>
+		<item title="Don't know"/>
+	</children>
+	<children depth="3">
+		<item title="Talks about ideas"/>
+		<item title="Talks about things"/>
+		<item title="Talks about people"/>
+	</children>
+	<children depth="3">
+		<item title="Ambidextrous"/>
+		<item title="Don't know"/>
+		<item title="Left-handed"/>
+		<item title="Right-handed"/>
+	</children>
+	<children depth="3">
+		<item title="Don't know"/>
+		<item title="Is in love"/>
+		<item title="Isn't in love"/>
+	</children>
+	<children depth="3">
+		<item title="Bathes once a day"/>
+		<item title="Bathes twice a day"/>
+		<item title="Bathes once every couple of days"/>
+		<item title="Bathes once a week"/>
+		<item title="Don't know"/>
+	</children>
+<children depth="3">
+		<item title="Phobic to dogs"/>
+		<item title="Phobic to flying"/>
+		<item title="Phobic to germs"/>
+		<item title="Phobic to heights"/>
+		<item title="Phobic to injections"/>
+		<item title="Phobic to light"/>
+		<item title="Phobic to people"/>
+		<item title="Phobic to snakes"/>
+		<item title="Phobic to spiders"/>
+		<item title="Don't know"/>
+	</children>
+	<children depth="3">
+		<item title="Doesn't have siblings"/>
+		<item title="Don't know"/>
+		<item title="Has 1 sibling"/>
+		<item title="Has 2 siblings"/>
+		<item title="Has 3 siblings"/>
+		<item title="Has more than 3 siblings"/>
+	</children>
+	<children depth="3">
+		<item title="Don't know"/>
+		<item title="Poops regularly"/>
+		<item title="Poops irregularly"/>
+	</children>
+	<children depth="3">
+		<item title="Don't know"/>
+		<item title="Prefers salty food"/>
+		<item title="Prefers sour food"/>
+		<item title="Prefers sweet food"/>
+	</children>
+	<children depth="3">
+		<item title="Bad tipper"/>
+		<item title="Doesn't pay the bill"/>
+		<item title="Don't know"/>
+		<item title="Good tipper"/>
+	</children>
+	<children depth="3">
+		<item title="Don't know"/>
+		<item title="Doesn't have sweaty hands"/>
+		<item title="Has sweaty hands"/>
+	</children>
+	<children depth="3">
+		<item title="Don't know"/>
+		<item title="Doesn't have a pet"/>
+		<item title="Has a pet"/>
+		<item title="Has more than one pet"/>
+	</children>
+	<children depth="3">
+		<item title="Don't know"/>
+		<item title="Sleeps well"/>
+		<item title="Wakes in the middle of the night"/>
+	</children>
+	<children depth="3">
+		<item title="Dreams at night"/>
+		<item title="Don't know"/>
+	</children>
+	<children depth="3">
+		<item title="Don't know"/>
+		<item title="Has less than 10 friends"/>
+		<item title="Has more than 10 friends"/>
+	</children>
+	<children depth="3">
+		<item title="Don't know"/>
+		<item title="Speaks 1 language"/>
+		<item title="Speaks 2 languages"/>
+		<item title="Speaks 3 languages"/>
+		<item title="Speaks more than three languages"/>
+	</children>
+	<children depth="4">
+		<item title="Don't know"/>
+		<item title="Doesn't use solar protection"/>
+		<item title="Uses solar protection"/>
+	</children>
 </depths>
